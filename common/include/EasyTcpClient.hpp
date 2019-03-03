@@ -36,7 +36,7 @@ public:
 		_isConn = false;
 	}
 	//初始化
-	void InitSocket() {
+	void InitSocket(int sendSize = SEND_BUFF_SIZE, int recvSize = RECV_BUFF_SIZE) {
 		CellNetwork::Init();
 
 		if (_pClient) {
@@ -48,7 +48,7 @@ public:
 		}
 		else {
 			//printf("Ok: create socket %d\n",(int)_sock);
-			_pClient = new CellClient(_sock);
+			_pClient = new CellClient(_sock, sendSize, recvSize);
 		}
 	}
 	//连接服务器

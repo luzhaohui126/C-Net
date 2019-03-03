@@ -42,6 +42,12 @@ public:
 	inline int getWritePos() {
 		return _nWritePos;
 	}
+	inline int getReadPos() {
+		return _nReadPos;
+	}
+	inline int getSize() {
+		return _nSize;
+	}
 	inline bool canRead(int n) {
 		return (_nReadPos + n) <= _nWritePos;
 	}
@@ -64,11 +70,11 @@ public:
 	template<typename T>
 	bool Read(T& n, bool bOffset = true) {
 		auto nLen = sizeof(T);
-		if (canRead(nLen)) {
+		if (canRead((int)nLen)) {
 			//读取缓冲区
-			pop((char *)&n, nLen);
+			pop((char *)&n, (int)nLen);
 			if (bOffset)
-				pop(nLen);
+				pop((int)nLen);
 			return true;
 		}
 		CellLog::Info("CellStream Read error\n");
@@ -79,11 +85,11 @@ public:
 		uint32_t rLen;
 		if (Read<uint32_t>(rLen,false)) {
 			auto nLen = sizeof(T)*rLen;
-			if (canRead( nLen + sizeof(uint32_t)))
+			if (canRead( (int)nLen + sizeof(uint32_t)))
 			{	//读取缓冲区
 				pop(sizeof(uint32_t));
 				pop((char *)pData, min(rLen, len) * sizeof(T));
-				pop(nLen);
+				pop((int)nLen);
 				return min(rLen,len);
 			}
 		}
@@ -93,10 +99,10 @@ public:
 	template<typename T>
 	bool Write(T n) {
 		auto nLen = sizeof(T);
-		if (canWrite(nLen)) {
+		if (canWrite((int)nLen)) {
 			//存入发送缓冲区
-			push((char *)&n, nLen);
-			push(nLen);
+			push((char *)&n, (int)nLen);
+			push((int)nLen);
 			return true;
 		}
 		CellLog::Info("CellStream Write error\n");
@@ -105,12 +111,12 @@ public:
 	template<typename T>
 	bool WriteArray(T* pData, uint32_t len) {
 		auto nLen = sizeof(T)*len;
-		if (canWrite(nLen + sizeof(uint32_t))) {
+		if (canWrite((int)nLen + sizeof(uint32_t))) {
 			//先写入数据长度
 			WriteInt32(len);
 			//存入发送缓冲区
-			push((char *)pData, nLen);
-			push(nLen);
+			push((char *)pData, (int)nLen);
+			push((int)nLen);
 			return true;
 		}
 		CellLog::Info("CellStream WriteArray error\n");

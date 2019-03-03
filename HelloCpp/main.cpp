@@ -25,7 +25,10 @@ public:
 		break;
 		case CMD_LOGOUT_RESULT:
 		{
-			CellRecvMsgStream r(header);
+			CellReadStream r(header);
+			auto len = r.ReadUint16();
+			auto cmd = r.getMsgCmd();
+			printf("len=%d cmd=%d\n", len, cmd);
 			auto n1 = r.ReadInt8();
 			auto n2 = r.ReadInt16();
 			auto n3 = r.ReadInt32();
@@ -38,9 +41,6 @@ public:
 			sn = r.ReadArray(sz, sizeof(sz));
 			sz[sn] = 0;
 			printf("%d %s\n", sn, sz);
-			sn = r.ReadArray(sz, sizeof(sz));
-			sz[sn] = 0;
-			printf("%d %s\n", sn, sz);
 			int nd[10] = {};
 			sn = r.ReadArray(nd, 10);
 			printf("%d", sn);
@@ -48,8 +48,6 @@ public:
 			{
 				printf(",%d ", nd[n]);
 			}
-			auto n7 = r.ReadDouble();
-			printf("\n%f\n", n7);
 			msgLogoutResult *res = (msgLogoutResult *)header;
 			printf("%d logout result %d %d\n", (int)_pClient->sockfd(), res->dataLen, res->resState);
 		}
@@ -77,25 +75,22 @@ private:
 
 int main()
 {
-	CellSendMsgStream s;
+	CellWriteStream s;
 	s.setMsgCmd(CMD_LOGOUT);
-	s.WriteInt8(1);
-	s.WriteInt16(2);
-	s.WriteInt32(3);
-	s.WriteInt64(4);
-	s.WriteFloat(5.0);
-	s.WriteDouble(6.0);
+	s.WriteInt8(11);
+	s.WriteInt16(22);
+	s.WriteInt32(33);
+	s.WriteInt64(44);
+	s.WriteFloat(55.05f);
+	s.WriteDouble(66.06);
 	s.WriteString("abcdef");
-	char a[] = "a1a2a3a4a5a6a7a8";
-	s.WriteArray(a, strlen(a));
 	int b[] = { 1,2,3,4,5,6,7,8,9 };
 	s.WriteArray(b, 8);
-	s.WriteDouble(7.0);
 	s.finish();
 
 	MyClient client;
 	client.Connect("127.0.0.1",4567);
-	client.SendData(s.data(),s.length());
+	client.SendData(s.data(),(int)s.length());
 	while (client.isRun())
 	{
 		client.OnRun();
