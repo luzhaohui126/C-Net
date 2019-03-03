@@ -36,7 +36,11 @@ public:
 		_isConn = false;
 	}
 	//初始化
+<<<<<<< HEAD
 	void InitSocket(int sendSize = SEND_BUFF_SIZE, int recvSize = RECV_BUFF_SIZE) {
+=======
+	void InitSocket() {
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 		CellNetwork::Init();
 
 		if (_pClient) {
@@ -48,7 +52,11 @@ public:
 		}
 		else {
 			//printf("Ok: create socket %d\n",(int)_sock);
+<<<<<<< HEAD
 			_pClient = new CellClient(_sock, sendSize, recvSize);
+=======
+			_pClient = new CellClient(_sock);
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 		}
 	}
 	//连接服务器

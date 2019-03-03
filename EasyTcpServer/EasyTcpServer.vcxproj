@@ -94,7 +94,10 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>..\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+<<<<<<< HEAD
       <PreprocessorDefinitions>_WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+=======
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
     </ClCompile>
     <Link>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -109,7 +112,10 @@
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <AdditionalIncludeDirectories>..\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+<<<<<<< HEAD
       <PreprocessorDefinitions>_WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+=======
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
     </ClCompile>
     <Link>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
@@ -118,6 +124,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+<<<<<<< HEAD
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -129,18 +136,32 @@
       <PreprocessorDefinitions>_WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SupportJustMyCode />
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+=======
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>..\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+<<<<<<< HEAD
       <GenerateDebugInformation>true</GenerateDebugInformation>
+=======
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
+<<<<<<< HEAD
       <Optimization>Disabled</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
@@ -152,12 +173,25 @@
       <PreprocessorDefinitions>_WIN32;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SupportJustMyCode />
       <InlineFunctionExpansion>AnySuitable</InlineFunctionExpansion>
+=======
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalOptions>/utf-8</AdditionalOptions>
+      <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
+      <AdditionalIncludeDirectories>..\common\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <AdditionalDependencies>ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+<<<<<<< HEAD
       <GenerateDebugInformation>true</GenerateDebugInformation>
+=======
+      <GenerateDebugInformation>false</GenerateDebugInformation>
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
       <LinkTimeCodeGeneration>UseLinkTimeCodeGeneration</LinkTimeCodeGeneration>
     </Link>
   </ItemDefinitionGroup>

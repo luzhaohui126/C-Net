@@ -12,7 +12,11 @@ class CellClient //: public objectPoolBase<CellClient,20000>
 public:
 	int _serverId = -1;
 	int _id = -1;
+<<<<<<< HEAD
 	CellClient(SOCKET sockfd = INVALID_SOCKET, int sendSize = SEND_BUFF_SIZE, int recvSize = RECV_BUFF_SIZE)
+=======
+	CellClient(SOCKET sockfd = INVALID_SOCKET) 
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 	//	:_sendBuff(SEND_BUFF_SIZE),_recvBuff(RECV_BUFF_SIZE)
 	{
 		static int _count = 0;

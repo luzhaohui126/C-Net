@@ -50,10 +50,14 @@ public:
 			break;
 		case CMD_LOGOUT:
 			{
+<<<<<<< HEAD
 				CellReadStream r(header);
 				auto len = r.ReadUint16();
 				auto cmd = r.getMsgCmd();
 				printf("len=%d,cmd=%d\n", len, cmd);
+=======
+				CellRecvMsgStream r(header);
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 				auto n1 = r.ReadInt8();
 				auto n2 = r.ReadInt16();
 				auto n3 = r.ReadInt32();
@@ -66,6 +70,12 @@ public:
 				sn = r.ReadArray(sz, sizeof(sz));
 				sz[sn] = 0;
 				printf("%d %s\n", sn, sz);
+<<<<<<< HEAD
+=======
+				sn = r.ReadArray(sz, sizeof(sz));
+				sz[sn] = 0;
+				printf("%d %s\n", sn, sz);
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 				int nd[10] = {};
 				sn = r.ReadArray(nd, 10);
 				printf("%d", sn);
@@ -73,11 +83,17 @@ public:
 				{
 					printf(",%d ", nd[n]);
 				}
+<<<<<<< HEAD
 				printf("\n");
+=======
+				auto n7 = r.ReadDouble();
+				printf("\n%f\n", n7);
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 				//msgLogout *logout = (msgLogout *)header;
 				//			CellLog::Info("%d logout %d %s \n", (int)clientSock, logout->dataLen, logout->userName);
 				//LogoutResult res;
 				//_sendCount += pClient->SendData((Head *)&res);
+<<<<<<< HEAD
 
 				CellWriteStream s;
 				s.setMsgCmd(CMD_LOGOUT_RESULT);
@@ -91,6 +107,24 @@ public:
 				s.WriteArray(nd, sn);
 				s.finish();
 				client->SendData(s.data(),(int)s.length());
+=======
+				CellSendMsgStream s;
+				s.setMsgCmd(CMD_LOGOUT_RESULT);
+				s.WriteInt8(1);
+				s.WriteInt16(2);
+				s.WriteInt32(3);
+				s.WriteInt64(4);
+				s.WriteFloat(5.0);
+				s.WriteDouble(6.0);
+				s.WriteString("abcdef");
+				char a[] = "a1a2a3a4a5a6a7a8";
+				s.WriteArray(a, strlen(a));
+				int b[] = { 1,2,3,4,5,6,7,8,9 };
+				s.WriteArray(b, 8);
+				s.WriteDouble(7.0);
+				s.finish();
+				client->SendData(s.data(), s.length());
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 			}
 			break;
 		case CMD_HEART_C2S:

@@ -3,6 +3,10 @@
 #ifdef	_WIN32
 #define FD_SETSIZE      10006
 #define	WIN32_LEAN_AND_MEAN
+<<<<<<< HEAD
+=======
+#define _CRT_SECURE_NO_WARNINGS
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 #define _WINSOCK_DEPRECATED_NO_WARNINGS
 #include<windows.h>
 #include<WinSock2.h>

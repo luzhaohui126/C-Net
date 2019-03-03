@@ -1,6 +1,7 @@
 ﻿#pragma once
 
 #include<string>
+<<<<<<< HEAD
 #include"EasyTcpClient.hpp"
 #include"CellMsgStream.hpp"
 
@@ -233,4 +234,20 @@ extern "C"
 		return 0;
 	}
 
+=======
+
+extern "C"
+{
+	int _declspec(dllexport) Add(int a, int b) {
+		return a + b;
+	}
+
+	typedef void(*CallBack1)(const char* str);
+
+	void _declspec(dllexport) TestCall1(const char* str, CallBack1 cb) {
+		std::string s = "Hello ";
+		s += str;
+		cb(s.c_str());
+	}
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 }

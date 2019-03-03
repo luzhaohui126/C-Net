@@ -465,6 +465,7 @@ Info:[2019-02-25 20:38:10]thread<4>,time<1.000064>,socket<196>,clients<0>,recv<0
 Info:[2019-02-25 20:38:11]thread<4>,time<1.000150>,socket<196>,clients<0>,recv<0>,msg<0>,send<0>
 Info:[2019-02-25 20:38:12]thread<4>,time<1.000240>,socket<196>,clients<0>,recv<0>,msg<0>,send<0>
 Info:[2019-02-25 20:38:13]thread<4>,time<1.000978>,socket<196>,clients<0>,recv<0>,msg<0>,send<0>
+<<<<<<< HEAD
 Info:[2019-03-02 13:24:03]CellLog::setLogPath sucecess,<server.txt,a>
 Info:[2019-03-02 13:24:03]Ok: create socket 192
 Info:[2019-03-02 13:24:03]Ok: socket 192 bind 4567
@@ -13372,3 +13373,5 @@ Info:[2019-03-03 09:21:55]thread<4>,time<1.000080>,socket<184>,clients<0>,recv<0
 Info:[2019-03-03 09:21:56]thread<4>,time<1.000710>,socket<184>,clients<0>,recv<0>,msg<0>,send<0>
 Info:[2019-03-03 09:21:57]thread<4>,time<1.000227>,socket<184>,clients<0>,recv<0>,msg<0>,send<0>
 Info:[2019-03-03 09:21:58]thread<4>,time<1.000305>,socket<184>,clients<0>,recv<0>,msg<0>,send<0>
+=======
+>>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
