@@ -74,10 +74,7 @@ public:
 				{
 					printf(",%d ", nd[n]);
 				}
-				//msgLogout *logout = (msgLogout *)header;
-				//			CellLog::Info("%d logout %d %s \n", (int)clientSock, logout->dataLen, logout->userName);
-				//LogoutResult res;
-				//_sendCount += pClient->SendData((Head *)&res);
+				printf("\n");
 				CellWriteStream s;
 				s.setMsgCmd(CMD_LOGOUT_RESULT);
 				s.WriteInt8(n1);
@@ -89,7 +86,7 @@ public:
 				s.WriteString(sz);
 				s.WriteArray(nd, sn);
 				s.finish();
-				client->SendData(s.data(), (int)s.length());
+				client->SendData(s.data(),(int)s.length());
 			}
 			break;
 		case CMD_HEART_C2S:

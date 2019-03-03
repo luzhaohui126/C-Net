@@ -86,12 +86,11 @@ int main()
 	s.WriteString("abcdef");
 	int b[] = { 1,2,3,4,5,6,7,8,9 };
 	s.WriteArray(b, 8);
-	s.WriteDouble(7.0);
 	s.finish();
 
 	MyClient client;
 	client.Connect("127.0.0.1",4567);
-	client.SendData(s.data(),s.length());
+	client.SendData(s.data(),(int)s.length());
 	while (client.isRun())
 	{
 		client.OnRun();

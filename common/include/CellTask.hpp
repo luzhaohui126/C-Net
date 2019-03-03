@@ -1,5 +1,5 @@
 ﻿#pragma once
-
+//2019.3.3
 //任务类型-基类
 #include<thread>
 #include<mutex>
