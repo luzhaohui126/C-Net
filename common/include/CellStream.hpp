@@ -42,15 +42,12 @@ public:
 	inline int getWritePos() {
 		return _nWritePos;
 	}
-<<<<<<< HEAD
 	inline int getReadPos() {
 		return _nReadPos;
 	}
 	inline int getSize() {
 		return _nSize;
 	}
-=======
->>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 	inline bool canRead(int n) {
 		return (_nReadPos + n) <= _nWritePos;
 	}
@@ -73,19 +70,11 @@ public:
 	template<typename T>
 	bool Read(T& n, bool bOffset = true) {
 		auto nLen = sizeof(T);
-<<<<<<< HEAD
 		if (canRead((int)nLen)) {
 			//读取缓冲区
 			pop((char *)&n, (int)nLen);
 			if (bOffset)
 				pop((int)nLen);
-=======
-		if (canRead(nLen)) {
-			//读取缓冲区
-			pop((char *)&n, nLen);
-			if (bOffset)
-				pop(nLen);
->>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 			return true;
 		}
 		CellLog::Info("CellStream Read error\n");
@@ -96,19 +85,11 @@ public:
 		uint32_t rLen;
 		if (Read<uint32_t>(rLen,false)) {
 			auto nLen = sizeof(T)*rLen;
-<<<<<<< HEAD
 			if (canRead( (int)nLen + sizeof(uint32_t)))
 			{	//读取缓冲区
 				pop(sizeof(uint32_t));
 				pop((char *)pData, min(rLen, len) * sizeof(T));
 				pop((int)nLen);
-=======
-			if (canRead( nLen + sizeof(uint32_t)))
-			{	//读取缓冲区
-				pop(sizeof(uint32_t));
-				pop((char *)pData, min(rLen, len) * sizeof(T));
-				pop(nLen);
->>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 				return min(rLen,len);
 			}
 		}
@@ -118,17 +99,10 @@ public:
 	template<typename T>
 	bool Write(T n) {
 		auto nLen = sizeof(T);
-<<<<<<< HEAD
 		if (canWrite((int)nLen)) {
 			//存入发送缓冲区
 			push((char *)&n, (int)nLen);
 			push((int)nLen);
-=======
-		if (canWrite(nLen)) {
-			//存入发送缓冲区
-			push((char *)&n, nLen);
-			push(nLen);
->>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 			return true;
 		}
 		CellLog::Info("CellStream Write error\n");
@@ -137,21 +111,12 @@ public:
 	template<typename T>
 	bool WriteArray(T* pData, uint32_t len) {
 		auto nLen = sizeof(T)*len;
-<<<<<<< HEAD
 		if (canWrite((int)nLen + sizeof(uint32_t))) {
 			//先写入数据长度
 			WriteInt32(len);
 			//存入发送缓冲区
 			push((char *)pData, (int)nLen);
 			push((int)nLen);
-=======
-		if (canWrite(nLen + sizeof(uint32_t))) {
-			//先写入数据长度
-			WriteInt32(len);
-			//存入发送缓冲区
-			push((char *)pData, nLen);
-			push(nLen);
->>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 			return true;
 		}
 		CellLog::Info("CellStream WriteArray error\n");

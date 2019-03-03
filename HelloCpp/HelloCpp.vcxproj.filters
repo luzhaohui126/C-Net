@@ -19,8 +19,6 @@
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>
-<<<<<<< HEAD
-=======
   <ItemGroup>
     <ClInclude Include="..\common\include\CellStream.hpp">
       <Filter>头文件</Filter>
@@ -29,5 +27,4 @@
       <Filter>头文件</Filter>
     </ClInclude>
   </ItemGroup>
->>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
 </Project>

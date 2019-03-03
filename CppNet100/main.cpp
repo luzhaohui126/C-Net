@@ -1,7 +1,6 @@
 ﻿#pragma once
-
+//2019.3.3
 #include<string>
-<<<<<<< HEAD
 #include"EasyTcpClient.hpp"
 #include"CellMsgStream.hpp"
 
@@ -62,16 +61,16 @@ extern "C"
 			pClient = nullptr;
 		}
 	}
-	EXPORT_DLL int CellClientSend(NativeTcpClient* pClient,const char *pData,int len) {
+	EXPORT_DLL int CellClientSend(NativeTcpClient* pClient, const char *pData, int len) {
 		if (pClient) {
-			return pClient->SendData(pData,len);
+			return pClient->SendData(pData, len);
 		}
 		return SOCKET_ERROR;
 	}
-	EXPORT_DLL int CellClientSendStream(NativeTcpClient* pClient,CellWriteStream* wStream) {
+	EXPORT_DLL int CellClientSendStream(NativeTcpClient* pClient, CellWriteStream* wStream) {
 		if (pClient&&wStream) {
 			wStream->finish();
-			return pClient->SendData(wStream->data(),(int)wStream->length());
+			return pClient->SendData(wStream->data(), (int)wStream->length());
 		}
 		return SOCKET_ERROR;
 	}
@@ -142,16 +141,16 @@ extern "C"
 		}
 		return false;
 	}
-	EXPORT_DLL bool CellWriteStreamWriteString(CellWriteStream* wStream, char* n,int len) {
+	EXPORT_DLL bool CellWriteStreamWriteString(CellWriteStream* wStream, char* n, int len) {
 		if (wStream) {
-			return wStream->WriteArray(n,len);
+			return wStream->WriteArray(n, len);
 		}
 		return false;
 	}
 
 	////////CellReadStream
-	EXPORT_DLL void* CellReadStreamCreate(char *data,int nSize) {
-		CellReadStream* rStream = new CellReadStream(data,nSize);
+	EXPORT_DLL void* CellReadStreamCreate(char *data, int nSize) {
+		CellReadStream* rStream = new CellReadStream(data, nSize);
 		return rStream;
 	}
 	EXPORT_DLL int CellReadStreamPos(CellReadStream* rStream) {
@@ -160,7 +159,7 @@ extern "C"
 	EXPORT_DLL int CellReadStreamSize(CellReadStream* rStream) {
 		return rStream->getSize();
 	}
-	EXPORT_DLL int8_t CellReadStreamReadInt8(CellReadStream* rStream, int8_t n=0) {
+	EXPORT_DLL int8_t CellReadStreamReadInt8(CellReadStream* rStream, int8_t n = 0) {
 		if (rStream) {
 			return rStream->Read(n);
 		}
@@ -198,7 +197,7 @@ extern "C"
 	}
 	EXPORT_DLL uint32_t CellReadStreamOnlyReadUInt32(CellReadStream* rStream, uint32_t n = 0) {
 		if (rStream) {
-			return rStream->Read(n,false);
+			return rStream->Read(n, false);
 		}
 		return n;
 	}
@@ -226,15 +225,14 @@ extern "C"
 		}
 		return n;
 	}
-	EXPORT_DLL uint32_t CellReadStreamReadString(CellReadStream* rStream, char *data,uint32_t len) {
+	EXPORT_DLL uint32_t CellReadStreamReadString(CellReadStream* rStream, char *data, uint32_t len) {
 		if (data && rStream)
 		{
 			return rStream->Read(data, len);
 		}
 		return 0;
 	}
-
-=======
+}
 
 extern "C"
 {
@@ -245,9 +243,8 @@ extern "C"
 	typedef void(*CallBack1)(const char* str);
 
 	void _declspec(dllexport) TestCall1(const char* str, CallBack1 cb) {
-		std::string s = "Hello ";
-		s += str;
-		cb(s.c_str());
-	}
->>>>>>> 13f1061a9afa4d04566659da0bbd773a4115c4b8
+			std::string s = "Hello ";
+			s += str;
+			cb(s.c_str());
+		}
 }
